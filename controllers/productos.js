@@ -48,7 +48,7 @@ const addProduct = async (req, res) => {
     //Guardar DB
     await products.save();
 
-    //res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
+    res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
 };
 
 
@@ -59,7 +59,7 @@ const deleteProduct = async (req, res) => {
     // res.json( req.body );
     const productoBorrado = await Productos.findByIdAndDelete(id);
     // res.json( productoBorrado );
-    res.redirect('http://localhost:8081/')
+    //res.redirect('http://localhost:8081/')
 
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
 
@@ -86,6 +86,8 @@ const getInfoByUpdateProduct = async (req = request, res) => {
 
 
     //res.redirect('http://localhost:8081/home')
+    res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
+
 };
 
 const updateProduct = async (req, res) => {
