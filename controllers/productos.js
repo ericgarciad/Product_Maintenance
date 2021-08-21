@@ -59,6 +59,8 @@ const deleteProduct = async (req, res) => {
     // res.json( req.body );
     const productoBorrado = await Productos.findByIdAndDelete(id);
     // res.json( productoBorrado );
+    res.redirect('http://localhost:8081/')
+
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
 
 
