@@ -52,9 +52,9 @@ class Server {
 
         // Directorio EJS (views/html.ejs)
         this.app.engine('html', require('ejs').renderFile);
-        this.app.set('view engine', 'html');
+        this.app.set('view engine', 'ejs');
         this.app.get('/', (req, res) => {
-            res.render('index.ejs');
+            res.render('views');
         })
         this.app.set('views', path.join(__dirname, '../views'));
 
