@@ -18,134 +18,113 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Supermarket APP</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </nav>
 
+
+
+
     <div class="container">
-        
 
-        <h1 class="h3 mb-3 text-center">Supermarket APP</h1>
+
         <div class="row">
-            
+
             <div class="col-xl-8">
-  
-                        <table class="table table-striped">
-                            <thead>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+        <h1 class="h3 mb-3 text-center">Product List</h1>
+
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Available</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%moviesList.forEach(movie=> {%>
+
+
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Brand</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Available</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%moviesList.forEach(movie=> {%>
+                                    <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32"
+                                            height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                    <td>
+                                        <%= movie.name %>
+                                    </td>
+                                    <td>
+                                        <%= movie.brand %>
+                                    </td>
+                                    <td>
+                                        <%= movie.category %>
+                                    </td>
+                                    <td>
+                                        <%= movie.price %>
+                                    </td>
 
-
-                                    <tr>
-                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32"
-                                                height="32" class="rounded-circle my-n1" alt="Avatar"></td>
-                                        <td>
-                                            <%= movie.name %>
-                                        </td>
-                                        <td>
-                                            <%= movie.brand %>
-                                        </td>
-                                        <td>
-                                            <%= movie.category %>
-                                        </td>
-                                        <td>
-                                            <%= movie.price %>
-                                        </td>
-
-                                        <% if(movie.available=='Inactive' ){ %>
-                                            <td><span id="availableTable" class="badge bg-danger">
+                                    <% if(movie.available=='Inactive' ){ %>
+                                        <td><span id="availableTable" class="badge bg-danger">
+                                                <%= movie.available %>
+                                            </span></td>
+                                        <% } else{ %>
+                                            <td><span id="availableTable" class="badge bg-success">
                                                     <%= movie.available %>
                                                 </span></td>
-                                            <% } else{ %>
-                                                <td><span id="availableTable" class="badge bg-success">
-                                                        <%= movie.available %>
-                                                    </span></td>
-                                                <% } %>
+                                            <% } %>
 
-                                                    <form method="POST"
-                                                        action="/getupdate/<%=movie._id%>/<%=movie.name%>/<%=movie.brand%>/<%=movie.category%>/<%=movie.price%>/<%=movie.available%>">
-                                                        <td><button type="submit" value="submit"
-                                                                class="btn btn-primary"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                    height="16" fill="currentColor"
-                                                                    class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
-                                                                    <path
-                                                                        d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-                                                                </svg></button></td>
+                                                <form method="POST"
+                                                    action="/getupdate/<%=movie._id%>/<%=movie.name%>/<%=movie.brand%>/<%=movie.category%>/<%=movie.price%>/<%=movie.available%>">
+                                                    <td><button type="submit" value="submit"
+                                                            class="btn btn-primary"><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                                                <path
+                                                                    d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                                                            </svg></button></td>
 
-                                                    </form>
+                                                </form>
 
 
 
-                                                    <form method="POST" action="/delete/<%= movie._id %>    ">
-                                                        <td><button type="submit" value="submit"
-                                                                class="btn btn-danger"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                    height="16" fill="currentColor" class="bi bi-trash"
-                                                                    viewBox="0 0 16 16">
-                                                                    <path
-                                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                                    <path fill-rule="evenodd"
-                                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                                </svg></button></td>
-                                                    </form>
-                                    </tr>
-                                    <%})%>
-                            </tbody>
-                        </table>
-            
+                                                <form method="POST" action="/delete/<%= movie._id %>    ">
+                                                    <td><button type="submit" value="submit" class="btn btn-danger"><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" class="bi bi-trash"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                                <path fill-rule="evenodd"
+                                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                            </svg></button></td>
+                                                </form>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-actions float-right">
-                            <div class="dropdown show">
-                                <a href="#" data-toggle="dropdown" data-display="static">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-more-horizontal align-middle">
-                                        <circle cx="12" cy="12" r="1"></circle>
-                                        <circle cx="19" cy="12" r="1"></circle>
-                                        <circle cx="5" cy="12" r="1"></circle>
-                                    </svg>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="card-title mb-0">Product maintenance</h5>
+      
+                        <h5 class="card-title mb-0 text-center">Add Product <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-success bi bi-plus-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                          </svg></h5>
                     </div>
                     <div class="card-body">
-                        <div class="row g-0">
-                            <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="64" height="64"
-                                    class="rounded-circle mt-2" alt="Angelica Ramos">
-                            </div>
-                            <div class="col-sm-9 col-xl-12 col-xxl-9">
-                                <strong>About me</strong>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore
-                                    magna aliqua.</p>
+                        <div class="row g-0 text-center">
+                      
+                            <div class="col-sm-12 col-xl-12 col-xxl-9">
+                                
+                                <p>Complete the form to add a product</p>
                             </div>
                         </div>
 
@@ -156,33 +135,33 @@
                                     <tbody>
                                         <tr>
                                             <th>Image</th>
-                                            <td><input type="file" class="form-control-file"
+                                            <td><input type="file" class="form-control-file form-group w-100"
                                                     id="exampleFormControlFile1"></td>
                                         </tr>
                                         <tr>
                                             <th>Name</th>
-                                            <td><input type="text" class="form-control" name="name" id="name"
+                                            <td><input type="text" class="form-control form-group w-100" name="name" id="name"
                                                     aria-describedby="emailHelp" placeholder="Enter name"></td>
                                         </tr>
                                         <tr>
                                             <th>Brand</th>
-                                            <td><input type="text" class="form-control" name="brand" id="brand"
+                                            <td><input type="text" class="form-control form-group w-100" name="brand" id="brand"
                                                     aria-describedby="emailHelp" placeholder="Enter brand"></td>
                                         </tr>
                                         <tr>
                                             <th>Category</th>
-                                            <td><input type="text" class="form-control" name="category" id="category"
+                                            <td><input type="text" class="form-control form-group w-100" name="category" id="category"
                                                     aria-describedby="emailHelp" placeholder="Enter category"></td>
                                         </tr>
                                         <tr>
                                             <th>Price</th>
-                                            <td><input type="number" step='any' class="form-control" name="price"
+                                            <td><input type="number" step='any' class="form-control form-group w-100" name="price"
                                                     id="price" aria-describedby="emailHelp" placeholder="Enter price">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Available</th>
-                                            <td><select class="form-control" name="available" id="available">
+                                            <td><select class="form-control form-group w-100" name="available" id="available">
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
                                                 </select>
@@ -192,7 +171,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <button type="submit" value="submit" class="btn btn-primary">Add Product</button>
+                            <div class="text-center">
+                            <button type="submit" value="submit" class="btn btn-success">Add Product</button>
+                        </div>
                         </form>
 
 
@@ -203,7 +184,7 @@
 
 
     </div>
-    
+
     <script src="./js/index.js"></script>
 </body>
 
