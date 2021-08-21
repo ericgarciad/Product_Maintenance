@@ -118,8 +118,8 @@ const updateProduct = async (req, res) => {
     //res.json( producto );
     
 
-    //res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
-    res.redirect('http://localhost:8081/')
+    res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
+    //res.redirect('http://localhost:8081/')
 };
 
 
