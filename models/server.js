@@ -51,11 +51,7 @@ class Server {
         this.app.use(express.static('public'));
 
         // Directorio EJS (views/html.ejs)
-        this.app.engine('html', require('ejs').renderFile);
         this.app.set('view engine', 'ejs');
-        this.app.get('/', (req, res) => {
-            res.render('views');
-        })
         this.app.set('views', path.join(__dirname, '../views'));
 
         // FileUpload - Carga de archivos (En la web del paquete recomiendan usar esta configuración)
