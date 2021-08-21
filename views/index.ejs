@@ -76,7 +76,7 @@
                                                 <% } %>
 
                                                     <form method="POST"
-                                                        action="/home/getupdate/<%=movie._id%>/<%=movie.name%>/<%=movie.brand%>/<%=movie.category%>/<%=movie.price%>/<%=movie.available%>">
+                                                        action="/getupdate/<%=movie._id%>/<%=movie.name%>/<%=movie.brand%>/<%=movie.category%>/<%=movie.price%>/<%=movie.available%>">
                                                         <td><button type="submit" value="submit"
                                                                 class="btn btn-primary"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="16"
@@ -92,7 +92,7 @@
 
 
 
-                                                    <form method="POST" action="/home/delete/<%= movie._id %>    ">
+                                                    <form method="POST" action="/delete/<%= movie._id %>    ">
                                                         <td><button type="submit" value="submit"
                                                                 class="btn btn-danger"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="16"
@@ -150,7 +150,7 @@
                         </div>
 
 
-                        <form method="POST" action="/home/add">
+                        <form method="POST" action="/add">
                             <div class="form-group">
                                 <table class="table table-sm mt-2 mb-4">
                                     <tbody>

@@ -18,7 +18,7 @@ class Server {
             auth: '/api/auth',
             buscar: '/api/buscar',
             categorias: '/api/categorias',
-            productos: '/home',
+            productos: '/',
             usuarios: '/api/usuarios',
             uploads: '/api/uploads',
         }
