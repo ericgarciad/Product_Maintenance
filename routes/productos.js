@@ -21,7 +21,7 @@ router.get('/', obtenerProductos);
 router.post('/add', addProduct);
 router.post('/delete/:id', deleteProduct);
 router.post('/getupdate/:id/:name/:brand/:category/:price/:available', getInfoByUpdateProduct);
-router.post('/update/:id/:name/:brand/:category/:price/:available', updateProduct);
+router.post('/update/:id', updateProduct);
 
 
 module.exports = router;
