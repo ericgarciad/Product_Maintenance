@@ -1,7 +1,7 @@
 const express = require('express') // Paquete de Terceros
 const cors = require('cors'); // Paquete de Terceros
 const fileUpload = require('express-fileupload'); // Paquete de Terceros
-
+const path = require('path');
 const { dbConnection } = require('../database/config');
 
 
@@ -56,6 +56,7 @@ class Server {
         this.app.get('/', (req, res) => {
             res.render('index.ejs');
         })
+        this.app.set('views', path.join(__dirname, '../views'));
 
         // FileUpload - Carga de archivos (En la web del paquete recomiendan usar esta configuración)
         // Sirve para utilizar archivos temporales en lugar de memoria para administrar el proceso de carga.
