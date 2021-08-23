@@ -16,8 +16,10 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Product Maintenance</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a  class="navbar-brand " href="/"> <img style="margin-left: 1rem;"" src="https://cdn.iconscout.com/icon/free/png-256/memo-pencil-write-paper-document-38853.png" width="40"
+                height="32" class="" alt="Avatar">
+        Product Maintenance</a>
     </nav>
 
 
@@ -46,37 +48,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%moviesList.forEach(movie=> {%>
+                            <%productList.forEach(product=> {%>
 
 
                                 <tr>
                                     <td><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/shopping_basket_full.png" width="32"
                                             height="32" class="rounded-circle my-n1" alt="Avatar"></td>
                                     <td>
-                                        <%= movie.name %>
+                                        <%= product.name %>
                                     </td>
                                     <td>
-                                        <%= movie.brand %>
+                                        <%= product.brand %>
                                     </td>
                                     <td>
-                                        <%= movie.category %>
+                                        <%= product.category %>
                                     </td>
-                                    <td>
-                                        <%= movie.price %> €
+                                    <td >
+                                        <%= product.price %>€
                                     </td>
 
-                                    <% if(movie.available=='Inactive' ){ %>
+                                    <% if(product.available=='No' ){ %>
                                         <td><span id="availableTable" class="badge bg-danger">
-                                                <%= movie.available %>
+                                                <%= product.available %>
                                             </span></td>
                                         <% } else{ %>
                                             <td><span id="availableTable" class="badge bg-success">
-                                                    <%= movie.available %>
+                                                    <%= product.available %>
                                                 </span></td>
                                             <% } %>
 
                                                 <form method="POST" 
-                                                    action="/getupdate/<%=movie._id%>/<%=movie.name%>/<%=movie.brand%>/<%=movie.category%>/<%=movie.price%>/<%=movie.available%>">
+                                                    action="/getupdate/<%=product._id%>/<%=product.name%>/<%=product.brand%>/<%=product.category%>/<%=product.price%>/<%=product.available%>">
                                                     <td><button type="submit" value="submit"
                                                             class="btn btn-primary"><svg
                                                                 xmlns="http://www.w3.org/2000/svg" width="16"
@@ -92,7 +94,7 @@
 
 
 
-                                                <form method="POST" action="/delete/<%= movie._id %>" onsubmit="return confirm('Do you really want to delete the product: <%= movie.name %>?');">
+                                                <form method="POST" action="/delete/<%= product._id %>" onsubmit="return confirm('Do you really want to delete the product: <%= product.name %>?');">
                                                     <td><button type="submit" value="submit" class="btn btn-danger"><svg
                                                                 xmlns="http://www.w3.org/2000/svg" width="16"
                                                                 height="16" fill="currentColor" class="bi bi-trash"
@@ -129,13 +131,20 @@
                         </div>
 
 
+                        <form method="POST" action="/upload">
+                        <input type="file" class="form-control-file form-group w-100" name="imgupload" id="imgupload"
+                                                    id="exampleFormControlFile1"></td>
+                                                    <button type="submit" value="submit" class="btn btn-success"> UPLOAD Product</button>
+                                                
+                                                </form>
+
                         <form method="POST" action="/add">
                             <div class="form-group">
                                 <table class="table table-sm mt-2 mb-4">
                                     <tbody>
                                         <tr>
                                             <th>Image</th>
-                                            <td><input type="file" class="form-control-file form-group w-100"
+                                            <td><input type="file" class="form-control-file form-group w-100" name="img" id="img"
                                                     id="exampleFormControlFile1"></td>
                                         </tr>
                                         <tr>
@@ -162,8 +171,8 @@
                                         <tr>
                                             <th>Available</th>
                                             <td><select class="form-control form-group w-100" name="available" id="available">
-                                                    <option value="Active">Active</option>
-                                                    <option value="Inactive">Inactive</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
                                                 </select>
                                             </td>
                                         </tr>

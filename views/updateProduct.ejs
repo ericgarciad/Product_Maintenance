@@ -15,8 +15,10 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Product Maintenance</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a  class="navbar-brand " href="/"> <img style="margin-left: 1rem;"" src="https://cdn.iconscout.com/icon/free/png-256/memo-pencil-write-paper-document-38853.png" width="40"
+                height="32" class="" alt="Avatar">
+        Product Maintenance</a>
     </nav>
 
 
@@ -29,34 +31,34 @@
                 <h3 class="text-center">UPDATE PRODUCT</h3>
                 <div class="col"></div>
                 <p class="text-center">Entrer the new information to update the product with id: <strong>
-                        <%=movie.id %>
+                        <%=product.id %>
                     </strong></p>
 
-                <form method="POST" action="/update/<%=movie.id %>">
+                <form method="POST" action="/update/<%=product.id %>">
                     <div class="form-group">
                         <label>ID</label>
                         <input onchange="changeN()" type="text" class="form-control" name="id" id="id" disabled
-                            value=<%=movie.id %>>
+                            value=<%=product.id %>>
                         <label>Name</label>
 
                         <input type="text" class="form-control form-group w-100" name="name" id="name"
-                            aria-describedby="emailHelp" placeholder="Enter name" value=<%=movie.name %>>
+                            aria-describedby="emailHelp" placeholder="Enter name" value=<%=product.name %>>
                         <label>Brand</label>
 
                         <input type="text" class="form-control form-group w-100" name="brand" id="brand"
-                            aria-describedby="emailHelp" placeholder="Enter brand" value=<%=movie.brand %>>
+                            aria-describedby="emailHelp" placeholder="Enter brand" value=<%=product.brand %>>
                         <label>Category</label>
                         <input type="text" class="form-control form-group w-100" name="category" id="category"
-                            aria-describedby="emailHelp" placeholder="Enter category" value=<%=movie.category %>>
+                            aria-describedby="emailHelp" placeholder="Enter category" value=<%=product.category %>>
                         <label>Price</label>
                         <input type="number" step='any' class="form-control form-group w-100" name="price" id="price"
-                            aria-describedby="emailHelp" placeholder="Enter price" value=<%=movie.price %>>
+                            aria-describedby="emailHelp" placeholder="Enter price" value=<%=product.price %>>
                         <label>Available</label>
                         <select class="form-control form-group w-100" name="available" id="available">
-                            <option value="<%=movie.available %>"> Available: <%=movie.available %>
+                            <option value="<%=product.available %>"> Available: <%=product.available %>
                             </option>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
 
 

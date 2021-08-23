@@ -7,6 +7,13 @@ var bodyParser=require("body-parser");
 
 var app=express();
 
+const cloudinary = require('cloudinary').v2 // paquete de terceros para subir imagenes a u nservidor de imagenes
+cloudinary.config(process.env.CLOUDINARY_URL);
+
+
+const fs = require("fs");
+
+
 /*
 const obtenerProductos = async(req, res = response ) => {
 
@@ -16,20 +23,27 @@ const obtenerProductos = async(req, res = response ) => {
 */
 const obtenerProductos = async (req, res) => {
 
-    Productos.find({}, function (err, movies) {
+    Productos.find({}, function (err, products) {
         res.render('index.ejs', {
-            moviesList: movies
+            productList: products
         })
     })
 }
 
+
 const addProduct = async (req, res) => {
 
-    const productoDB = await Productos.findOne({ name: req.body.name });
 
-    if (productoDB) {
+
+    if ((!req.body.name || !req.body.brand || !req.body.category || !req.body.price || !req.body.available) ){
         return res.status(400).json({
-            msg: `El producto ${req.body.name} ya existe`
+            Error_message: `You have to complete all the fields to add a new product `
+        });
+    }
+
+    if (req.body.price < 0) {
+        return res.status(400).json({
+            Error_message: `The price can only be 0 or greater than 0. Please, check the price: ${req.body.price}`
         });
     }
 
@@ -39,16 +53,19 @@ const addProduct = async (req, res) => {
         brand: req.body.brand,
         category: req.body.category,
         price: req.body.price,
-        available: req.body.available
+        available: req.body.available,
+        img: req.body.img
     }
 
     const products = new Productos(data)
     console.log("tmp " + products)
 
+
     //Guardar DB
     await products.save();
 
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
+    //res.redirect('http://localhost:8081')
 };
 
 
@@ -59,8 +76,6 @@ const deleteProduct = async (req, res) => {
     // res.json( req.body );
     const productoBorrado = await Productos.findByIdAndDelete(id);
     // res.json( productoBorrado );
-    //res.redirect('http://localhost:8081/')
-
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
 
 
@@ -78,7 +93,7 @@ const getInfoByUpdateProduct = async (req = request, res) => {
     //res.json( req.params );
     
         res.render('updateProduct.ejs', {
-            movie: req.params
+            product: req.params
         })
 
         
@@ -86,8 +101,6 @@ const getInfoByUpdateProduct = async (req = request, res) => {
 
 
     //res.redirect('http://localhost:8081/home')
-    res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
-
 };
 
 const updateProduct = async (req, res) => {
@@ -98,9 +111,9 @@ const updateProduct = async (req, res) => {
 
     const productoDB = await Productos.findOne({ name: req.body.name });
 
-    if (productoDB) {
+    if (req.body.price < 0) {
         return res.status(400).json({
-            msg: `El producto ${req.body.name} ya existe`
+            Error_message: `The price can only be 0 or greater than 0. Please, check the price: ${req.body.price}`
         });
     }
 
@@ -113,9 +126,11 @@ const updateProduct = async (req, res) => {
         available: req.body.available
     }
 
-    const producto = await Productos.findByIdAndUpdate(id, data, { new: true });
-
+    //const producto = await Productos.findByIdAndUpdate(id, data, { new: true });
     //res.json( producto );
+
+     await Productos.findByIdAndUpdate(id, data, { new: true });
+
     
 
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
