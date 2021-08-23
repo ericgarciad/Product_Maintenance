@@ -1,26 +1,25 @@
 const { Router } = require('express');
-const { check } = require('express-validator');
-const fileUpload = require('multer')
 
-const { validarCampos } = require('../middlewares');
 
-const {// crearProducto,
-    obtenerProductos,
+const {
+    getProducts,
     addProduct,
     deleteProduct,
     getInfoByUpdateProduct,
     updateProduct,
-    //obtenerProducto,
-   // actualizarProducto,
-    //borrarProducto 
+   
 } = require('../controllers/productos');
 
 const router = Router();
 
-//  Obtener todas las productos - publico
-router.get('/', obtenerProductos);
+//  Get Products
+router.get('/', getProducts);
+//  Add Products
 router.post('/add', addProduct);
+//  Delete Products
 router.post('/delete/:id', deleteProduct);
+//  Show info update Products
 router.post('/getupdate/:id/:name/:brand/:category/:price/:available', getInfoByUpdateProduct);
+//  Update Products
 router.post('/update/:id', updateProduct);
 module.exports = router;

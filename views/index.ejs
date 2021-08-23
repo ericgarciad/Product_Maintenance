@@ -17,9 +17,10 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-        <a  class="navbar-brand " href="/"> <img style="margin-left: 1rem;"" src="https://cdn.iconscout.com/icon/free/png-256/memo-pencil-write-paper-document-38853.png" width="40"
+        <a class="navbar-brand " href="/"> <img style="margin-left: 1rem;"" src="
+                https://cdn.iconscout.com/icon/free/png-256/memo-pencil-write-paper-document-38853.png" width="40"
                 height="32" class="" alt="Avatar">
-        Product Maintenance</a>
+            Product Maintenance</a>
     </nav>
 
 
@@ -33,7 +34,7 @@
             <div class="col-xl-8">
                 <div class="table-responsive">
                     <table class="table table-striped">
-        <h1 class="h3 mb-3 text-center">Product List</h1>
+                        <h1 class="h3 mb-3 text-center">Product List</h1>
 
                         <thead>
                             <tr>
@@ -52,8 +53,8 @@
 
 
                                 <tr>
-                                    <td><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/shopping_basket_full.png" width="32"
-                                            height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                    <td><img src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/512x512/shopping_basket_full.png"
+                                            width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
                                     <td>
                                         <%= product.name %>
                                     </td>
@@ -63,7 +64,7 @@
                                     <td>
                                         <%= product.category %>
                                     </td>
-                                    <td >
+                                    <td>
                                         <%= product.price %>€
                                     </td>
 
@@ -77,7 +78,7 @@
                                                 </span></td>
                                             <% } %>
 
-                                                <form method="POST" 
+                                                <form method="POST"
                                                     action="/getupdate/<%=product._id%>/<%=product.name%>/<%=product.brand%>/<%=product.category%>/<%=product.price%>/<%=product.available%>">
                                                     <td><button type="submit" value="submit"
                                                             class="btn btn-primary"><svg
@@ -94,7 +95,8 @@
 
 
 
-                                                <form method="POST" action="/delete/<%= product._id %>" onsubmit="return confirm('Do you really want to delete the product: <%= product.name %>?');">
+                                                <form method="POST" action="/delete/<%= product._id %>"
+                                                    onsubmit="return confirm('Do you really want to delete the product: <%= product.name %>?');">
                                                     <td><button type="submit" value="submit" class="btn btn-danger"><svg
                                                                 xmlns="http://www.w3.org/2000/svg" width="16"
                                                                 height="16" fill="currentColor" class="bi bi-trash"
@@ -115,17 +117,21 @@
             <div class="col-xl-4 mt-5 mt-md-0">
                 <div class="card">
                     <div class="card-header">
-      
-                        <h5 class="card-title mb-0 text-center">Add Product <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-success bi bi-plus-square" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                          </svg></h5>
+
+                        <h5 class="card-title mb-0 text-center">Add Product <svg xmlns="http://www.w3.org/2000/svg"
+                                width="20" height="20" fill="currentColor" class="text-success bi bi-plus-square"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg></h5>
                     </div>
                     <div class="card-body">
                         <div class="row g-0 text-center">
-                      
+
                             <div class="col-sm-12 col-xl-12 col-xxl-9">
-                                
+
                                 <p>Complete the form to add a product</p>
                             </div>
                         </div>
@@ -143,28 +149,33 @@
                                         -->
                                         <tr>
                                             <th>Name</th>
-                                            <td><input type="text" class="form-control form-group w-100" name="name" id="name"
-                                                    aria-describedby="emailHelp" placeholder="Enter name"></td>
+                                            <td><input type="text" class="form-control form-group w-100" name="name"
+                                                    id="name" aria-describedby="emailHelp" placeholder="Enter name">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Brand</th>
-                                            <td><input type="text" class="form-control form-group w-100" name="brand" id="brand"
-                                                    aria-describedby="emailHelp" placeholder="Enter brand"></td>
+                                            <td><input type="text" class="form-control form-group w-100" name="brand"
+                                                    id="brand" aria-describedby="emailHelp" placeholder="Enter brand">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Category</th>
-                                            <td><input type="text" class="form-control form-group w-100" name="category" id="category"
-                                                    aria-describedby="emailHelp" placeholder="Enter category"></td>
+                                            <td><input type="text" class="form-control form-group w-100" name="category"
+                                                    id="category" aria-describedby="emailHelp"
+                                                    placeholder="Enter category"></td>
                                         </tr>
                                         <tr>
                                             <th>Price</th>
-                                            <td><input type="number" step='any' class="form-control form-group w-100" name="price"
-                                                    id="price" aria-describedby="emailHelp" placeholder="Enter price">
+                                            <td><input type="number" step='any' class="form-control form-group w-100"
+                                                    name="price" id="price" aria-describedby="emailHelp"
+                                                    placeholder="Enter price">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Available</th>
-                                            <td><select class="form-control form-group w-100" name="available" id="available">
+                                            <td><select class="form-control form-group w-100" name="available"
+                                                    id="available">
                                                     <option value="Yes">Yes</option>
                                                     <option value="No">No</option>
                                                 </select>
@@ -175,8 +186,8 @@
                                 </table>
                             </div>
                             <div class="text-center">
-                            <button type="submit" value="submit" class="btn btn-success">Add Product</button>
-                        </div>
+                                <button type="submit" value="submit" class="btn btn-success">Add Product</button>
+                            </div>
                         </form>
 
 

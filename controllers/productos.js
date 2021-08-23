@@ -2,26 +2,8 @@ const { response, request } = require('express');
 const { body } = require('express-validator');
 const Productos = require('../models/producto');
 
-var express=require("express");
-var bodyParser=require("body-parser");
-
-var app=express();
-
-const cloudinary = require('cloudinary').v2 // paquete de terceros para subir imagenes a u nservidor de imagenes
-cloudinary.config(process.env.CLOUDINARY_URL);
-
-
-const fs = require("fs");
-
-
-/*
-const obtenerProductos = async(req, res = response ) => {
-
-   res.send( Productos.find({}));
-    
-}
-*/
-const obtenerProductos = async (req, res) => {
+//Get products
+const getProducts = async (req, res) => {
 
     Productos.find({}, function (err, products) {
         res.render('index.ejs', {
@@ -30,12 +12,10 @@ const obtenerProductos = async (req, res) => {
     })
 }
 
-
+//Add Products
 const addProduct = async (req, res) => {
 
-
-
-    if ((!req.body.name || !req.body.brand || !req.body.category || !req.body.price || !req.body.available) ){
+    if ((!req.body.name || !req.body.brand || !req.body.category || !req.body.price || !req.body.available)) {
         return res.status(400).json({
             Error_message: `You have to complete all the fields to add a new product `
         });
@@ -61,14 +41,14 @@ const addProduct = async (req, res) => {
     console.log("tmp " + products)
 
 
-    //Guardar DB
+    //Save in DB
     await products.save();
 
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
     //res.redirect('http://localhost:8081')
 };
 
-
+// Delete products
 const deleteProduct = async (req, res) => {
 
     const { id } = req.params;
@@ -82,27 +62,23 @@ const deleteProduct = async (req, res) => {
     //res.redirect('http://localhost:8081/home')
 };
 
+//Get info before update
 const getInfoByUpdateProduct = async (req = request, res) => {
 
-    
 
     const { id, name, brand, category, price, available } = req.params;
     const bodyR = req.query.imageID;
     //res.json( id );
     //res.json( req.body );
     //res.json( req.params );
-    
-        res.render('updateProduct.ejs', {
-            product: req.params
-        })
 
-        
-    //res.redirect('http://localhost:8081/home')
+    res.render('updateProduct.ejs', {
+        product: req.params
+    })
 
-
-    //res.redirect('http://localhost:8081/home')
 };
 
+//Update product
 const updateProduct = async (req, res) => {
 
     const { id } = req.params;
@@ -118,7 +94,7 @@ const updateProduct = async (req, res) => {
     }
 
     const data = {
-        
+
         name: req.body.name,
         brand: req.body.brand,
         category: req.body.category,
@@ -126,12 +102,7 @@ const updateProduct = async (req, res) => {
         available: req.body.available
     }
 
-    //const producto = await Productos.findByIdAndUpdate(id, data, { new: true });
-    //res.json( producto );
-
-     await Productos.findByIdAndUpdate(id, data, { new: true });
-
-    
+    await Productos.findByIdAndUpdate(id, data, { new: true });
 
     res.redirect('https://productmaintenance-nodeegd.herokuapp.com/')
     //res.redirect('http://localhost:8081/')
@@ -139,13 +110,9 @@ const updateProduct = async (req, res) => {
 
 
 module.exports = {
-    //crearProducto,
-    obtenerProductos,
+    getProducts,
     addProduct,
     deleteProduct,
     getInfoByUpdateProduct,
     updateProduct,
-    // obtenerProducto,
-    // actualizarProducto,
-    // borrarProducto
 }

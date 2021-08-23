@@ -11,11 +11,11 @@ const dbConnection = async() => {
             useFindAndModify: false
         } );
 
-        console.log('Base de datos online');
+        console.log('Data Base MongoDB online');
 
     }catch (error) {
         console.log(error);
-        throw new Error('Error al iniciar la base de datos');
+        throw new Error('Error to start Data Base');
     }
 }
 
